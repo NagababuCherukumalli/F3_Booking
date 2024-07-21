@@ -89,15 +89,13 @@ public class FLYADEAL {
 
 				}
 
-				System.out.println("API URL:: " + flyAdealApiUrl);
+				System.out.println(flyAdealApiUrl);
 				System.out.println(PnrDetails.PnrId);
-
-				
-				        FirefoxOptions options = new
+				FirefoxOptions options = new
 						FirefoxOptions();  
 						options.addPreference("layout.css.devPixelsPerPx", "0.3");
 						options.addPreference("permissions.default.image", 2);
-						options.addArguments("--headless");
+						//options.addArguments("--headless");
 						driver = new FirefoxDriver(options);
 						driver.manage().window().maximize();
 						driver.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);

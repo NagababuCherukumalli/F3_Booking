@@ -3,6 +3,7 @@ package pageObjects;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
@@ -41,7 +42,7 @@ public class PageUtils {
 	 */
 	public static void waitForElementToLoad(WebDriver driver, WebElement element) {
 		long timeoutInSeconds = 60;
-		WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds)); 
 		wait.until(ExpectedConditions.visibilityOf(element));
 	}
 	/**
@@ -55,25 +56,14 @@ public class PageUtils {
 				return ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
 			}
 		};
-		WebDriverWait wait = new WebDriverWait(driver, 30);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30)); 
 		wait.until(pageLoadCondition);
 	}
 
-	public static void clickElementForFluent(WebDriver driver, WebElement element) {
-		//long timeoutInSeconds = 60;
-		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
-			    .withTimeout(60, TimeUnit.SECONDS)
-			    .pollingEvery(5, TimeUnit.SECONDS)
-			    .ignoring(NoSuchElementException.class);
-		//WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
-		element = wait.until(ExpectedConditions.elementToBeClickable(element));
-		//waitForElementToLoad(driver, element);
-		element.click();
-		//waitForPageLoad(driver);
-	}
+
 	public static void clickElement(WebDriver driver, WebElement element) {
 		long timeoutInSeconds = 30;
-		WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds)); 
 		element = wait.until(ExpectedConditions.elementToBeClickable(element));
 		waitForElementToLoad(driver, element);
 		element.click();
@@ -143,12 +133,12 @@ public class PageUtils {
 	}
 	public static void waitForElementToLoadByLocator(WebDriver driver, By by) {
 		long timeoutInSeconds = 150;
-		WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds)); 
 		wait.until(ExpectedConditions.visibilityOfElementLocated(by));
 	}
 	public static void urlChangeTime(WebDriver driver,String text){
 		long timeoutInSeconds = 60;
-	WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds)); 
 	wait.until(ExpectedConditions.urlContains(text));
 	}
 	
@@ -164,7 +154,7 @@ public class PageUtils {
 		return status;
 	}public static void waitForElementToVisibility(WebDriver driver, WebElement element) {
 		long timeoutInSeconds = 60;
-		WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds)); 
 		wait.until(ExpectedConditions.visibilityOf(element));
 	}
 	
@@ -177,7 +167,7 @@ public class PageUtils {
 	 */
 	public static void waitForElementTextToBe(WebDriver driver, WebElement element, String textToAppear) {
 		long timeoutInSeconds = 100;
-		WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds)); 
 		wait.until(ExpectedConditions.textToBePresentInElement(element, textToAppear));
 	}
 

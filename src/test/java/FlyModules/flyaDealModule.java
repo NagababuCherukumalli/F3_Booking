@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
@@ -51,7 +52,7 @@ public class flyaDealModule extends passengersDetails {
 
 		
 		
-		WebDriverWait wait = new WebDriverWait(driver, 25); // Set the maximum wait time to 60 seconds
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25));  // Set the maximum wait time to 60 seconds
 		boolean isPageLoaded = false;
 		int maxAttempts = 4;
 		int attempt = 1;
