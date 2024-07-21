@@ -5331,7 +5331,7 @@ public class flyadealPage extends BaseClass {
 	public static WebElement chk_Aggree() throws Exception {
 		element = null;
 		try {
-			PageUtils.scrollDown_card(driver);
+			//PageUtils.scrollDown_card(driver);
 			Thread.sleep(2000);
 			element = driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='I accept the'])[1]/preceding::span[8]"));
 
