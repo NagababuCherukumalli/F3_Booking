@@ -92,35 +92,17 @@ public class FLYADEAL {
 				System.out.println("API URL: " + flyAdealApiUrl);
 				System.out.println(PnrDetails.PnrId);
 
-				
-				
-				Map<String, Object> prefs = new HashMap<String, Object>();
-				prefs.put("profile.default_content_setting_values.notifications", 2);
-				ChromeOptions options = new ChromeOptions();
-				options.setExperimentalOption("prefs", prefs);
-				options.setPageLoadStrategy(PageLoadStrategy.NONE);
-				options.addArguments("start-maximized");
-				options.setExperimentalOption("useAutomationExtension", false);
-				options.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
-				options.addArguments("--no-sandbox");
-				options.addArguments("--disable-infobars");
-				options.addArguments("--disable-dev-shm-usage");
-				options.addArguments("--disable-browser-side-navigation");
-				options.addArguments("--disable-gpu");
-				options.addArguments("--enable-javascript");
-				//prefs.put("profile.managed_default_content_settings.images", 2);
-				options.setExperimentalOption("prefs", prefs);
-				options.addArguments("force-device-scale-factor=0.25");
-				options.addArguments("--clear-ssl-state");
-				options.addArguments("--disable-cache");
-				options.addArguments("--disk-cache-size=0");
-				options.addArguments("--disable-network-throttling");
-				driver = new ChromeDriver(options);
-				driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-				// System.out.println(driver.manage().window().getSize());
-				driver.manage().deleteAllCookies();
-				
-				
+							
+				  
+				FirefoxOptions options = new
+						FirefoxOptions();  
+						options.addPreference("layout.css.devPixelsPerPx", "0.3");
+						options.addPreference("permissions.default.image", 2);
+						options.addArguments("--headless");
+						driver = new FirefoxDriver(options);
+						driver.manage().window().maximize();
+						driver.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
+						driver.manage().deleteAllCookies();
 				driver.get(flyAdealApiUrl);
 				new BaseClass(driver);
 				flyaDealModule.selectFlightAndFare_Fly(driver, PnrDetails, Float.parseFloat(PnrDetails.Amount),Float.parseFloat(PnrDetails.UserPaidAmount));
